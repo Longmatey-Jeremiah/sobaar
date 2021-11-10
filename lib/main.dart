@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sobaar/screens/splash/index.dart';
+// import 'package:sobaar/screens/splash/index.dart';
+import 'package:sobaar/screens/auth/register/index.dart';
 // import 'package:sobaar/screens/home/index.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: RegisterScreen(),
     );
   }
 }
