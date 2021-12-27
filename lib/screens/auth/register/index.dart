@@ -9,6 +9,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
+  var emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,16 +57,47 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               // sign in form
               Container(
+                padding: const EdgeInsets.all(20),
                 child: Builder(
-                    builder: (context) => Form(
-                          key: _formKey,
-                          child: Container(
-                            child: Center(
-                              child: Text('Login'),
+                  builder: (context) => Form(
+                      key: _formKey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          TextFormField(
+                            controller: emailController,
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.person_rounded,
+                              ),
+                              border: OutlineInputBorder(),
+                              // focusedBorder: InputBorder(borderSide: BorderSide(color: Colors.amber)),
+                              labelText: 'Name',
+                              hintText: 'Your name',
+                              hintStyle: TextStyle(color: Colors.grey.shade300),
                             ),
+                            validator: (emailController) {
+                              if (emailController == null ||
+                                  emailController.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              return null;
+                            },
                           ),
-                        ),
-                        ),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Processing Data...')),
+                                );
+                              }
+                            },
+                            child: Text('Log in'),
+                          )
+                        ],
+                      )),
+                ),
               ),
             ],
           ),

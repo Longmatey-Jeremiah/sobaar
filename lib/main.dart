@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-// import 'package:sobaar/screens/splash/index.dart';
-import 'package:sobaar/screens/auth/register/index.dart';
-// import 'package:sobaar/screens/home/index.dart';
+// import 'package:flutter/services.dart';
+import 'package:sobaar/screens/welcome_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
+    /* SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
+        statusBarColor: Colors.grey,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
       ),
-    );
+    ); */
     return MaterialApp(
+      // theme: ThemeData(primaryColor: Colors.purple[900]),
       debugShowCheckedModeBanner: false,
-      home: RegisterScreen(),
+      home: WelcomePage(),
     );
   }
 }
