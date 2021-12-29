@@ -14,18 +14,21 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   List data = [
     {
-      'title': 'WELCOME',
-      'sub-title': 'Lorem ipsum dolor satum',
+      'title': 'Answer customers questions',
+      'sub-title':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent malesuada enim blandit turpis felis massa cum molestie nibh. Diam morbi .',
       'image': 'welcome.png'
     },
     {
-      'title': 'SIGN UP',
-      'sub-title': 'Lorem ipsum dolor satum',
+      'title': 'Answer customers questions',
+      'sub-title':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent malesuada enim blandit turpis felis massa cum molestie nibh. Diam morbi .',
       'image': 'signup.png'
     },
     {
-      'title': 'LOGIN',
-      'sub-title': 'Lorem ipsum dolor satum',
+      'title': 'Answer customers questions',
+      'sub-title':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent malesuada enim blandit turpis felis massa cum molestie nibh. Diam morbi .',
       'image': 'login.png'
     }
   ];
@@ -37,10 +40,11 @@ class _WelcomePageState extends State<WelcomePage> {
         height: double.maxFinite,
         width: double.maxFinite,
         decoration: BoxDecoration(
-          image: DecorationImage(
+/*           image: DecorationImage(
             image: AssetImage('assets/images/bg.png'),
             fit: BoxFit.cover,
-          ),
+          ), */
+          color: Colors.blue.shade900,
         ),
         child: PageView.builder(
             scrollDirection: Axis.vertical,
@@ -59,26 +63,29 @@ class _WelcomePageState extends State<WelcomePage> {
                       Container(
                         child: Image.asset(
                             "assets/images/" + data[index]['image']),
-                        height: 300,
+                        height: 250,
                         width: double.maxFinite,
                       ),
                       Container(
                         margin: const EdgeInsets.symmetric(horizontal: 20.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            BaseLargeText(
-                              text: data[index]['title'],
-                              color: BaseColors.primary,
+                            Center(
+                              child: BaseLargeText(
+                                text: data[index]['title'],
+                                color: BaseColors.light,
+                                size: 25,
+                              ),
                             ),
                             SizedBox(height: 10.0),
-                            BaseText(
-                              text: data[index]['sub-title'],
-                              color: BaseColors.grey,
+                            Center(
+                              child: BaseText(
+                                text: data[index]['sub-title'],
+                                color: Colors.grey.shade400,
+                                size: 14.4,
+                              ),
                             ),
-                            SizedBox(height: 20.0),
-                            BaseButton(),
                             SizedBox(height: 20.0),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -86,20 +93,34 @@ class _WelcomePageState extends State<WelcomePage> {
                                 data.length,
                                 (dotsIndex) {
                                   return Container(
-                                    width: index == dotsIndex ? 25 : 8,
+                                    width: index == dotsIndex ? 30 : 8,
                                     margin: dotsIndex == data.length
                                         ? EdgeInsets.only(right: 0)
-                                        : EdgeInsets.only(right: 4),
+                                        : EdgeInsets.only(right: 6),
                                     height: 8,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: index == dotsIndex
-                                          ? BaseColors.primary
-                                          : BaseColors.grey,
+                                          ? BaseColors.light
+                                          : BaseColors.light.withOpacity(0.5),
                                     ),
                                   );
                                 },
                               ),
+                            ),
+                            SizedBox(height: 20.0),
+                            Row(
+                              children: [
+                                BaseButton(
+                                  width: MediaQuery.of(context).size.width / 2 -
+                                      30,
+                                ),
+                                SizedBox(width: 20),
+                                BaseButton(
+                                  width: MediaQuery.of(context).size.width / 2 -
+                                      30,
+                                ),
+                              ],
                             ),
                           ],
                         ),
